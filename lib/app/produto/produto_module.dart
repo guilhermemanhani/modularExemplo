@@ -9,9 +9,15 @@ class ProdutoModule extends Module {
   final List<ModularRoute> routes = [
     // ChildRoute('/:nome', child: (context, args) => ProdutoPage()),
     ChildRoute(
-      '/:nome',
+      '/:nome/xyz',
       child: (context, args) => ProdutoPage(
         nome: args.params['nome'],
+      ),
+    ),
+    ChildRoute(
+      '/xyz?nome=produtox&id=10',
+      child: (context, args) => ProdutoPage(
+        nome: args.queryParams['nome'],
       ),
     ),
   ];
