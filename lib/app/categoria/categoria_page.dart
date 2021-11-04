@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular_example/app/categoria/model/categoria_controller.dart';
 // import 'package:flutter_modular/flutter_modular.dart';
 
 class CategoriaPage extends StatefulWidget {
@@ -13,7 +15,8 @@ class CategoriaPage extends StatefulWidget {
   State<CategoriaPage> createState() => _CategoriaPageState();
 }
 
-class _CategoriaPageState extends State<CategoriaPage> {
+class _CategoriaPageState
+    extends ModularState<CategoriaPage, CategoriaController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +24,18 @@ class _CategoriaPageState extends State<CategoriaPage> {
         title: const Text('Categoria'),
       ),
       body: Center(
-        child: Text(widget.categoria ?? 'Nao tem categoria'),
+        child: Column(
+          children: [
+            Text(widget.categoria ?? 'Nao tem categoria'),
+            TextButton(
+              onPressed: () {
+                // var controller = Modular.get<CategoriaController>();
+                print(controller.hashCode);
+              },
+              child: const Text('Get Controller'),
+            )
+          ],
+        ),
       ),
     );
   }
